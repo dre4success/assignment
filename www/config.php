@@ -1,7 +1,7 @@
 <?php
 
 		
-		$db = mysqli_connect("localhost", "root", "dre", "assignment") or die(mysqli_error());	
+		$db = mysqli_connect("localhost", "root", "native", "assignment") or die(mysqli_error());	
 
 
 ?> 
