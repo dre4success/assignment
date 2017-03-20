@@ -14,12 +14,24 @@
 		.lo {width: 250px;
 			height: 40px;
 			border-radius: 10px}
+			div {margin-top: 30px}
+
+	a {color: black;
+		font-weight: 700;
+		font-style: italic;}
+
+		#what{margin-left: 10px}
 </style>
 </head>
 
 <body>
 					
 	     <center>
+	     	<div>
+	     	<a href="login.php">Click to Register</a>
+			<a href="signin.php" id="what">Click to Sign In</a>
+				</div>
+				
 			<h1>Register</h1>
 
 			<?php

@@ -1,5 +1,5 @@
 <?php
-
+	session_start();
 	include 'config.php';
 
 ?>
@@ -7,14 +7,32 @@
 <html>
 <head>
 <title>Sign In</title>
-<style></style>
+<style>
+	.lo {width: 200px;
+			height: 40px;
+			border-radius: 10px}
+
+	div {margin-top: 30px}
+
+	a {color: black;
+		font-weight: 700;
+		font-style: italic;}
+
+		#what{margin-left: 10px}
+	
+	
+</style>
 	
 
 
 </head>
 
 <body>
-<center>
+<center>	<div>
+			<a href="login.php">Click To Register</a>
+			<a href="signin.php" id="what">Click To Sign In</a>
+			</div>
+			<h1>Sign In</h1>
 
 <?php
 
@@ -39,20 +57,20 @@
 
 		if(empty($error)){ 
 			
-			$query = mysqli_query($db, "SELECT *FROM login WHERE
-										username= '".$uname."' AND
-										password= '".$pword."'")
+			$query = mysqli_query($db, "SELECT * FROM login WHERE
+										username='".$uname."' AND
+										password='".$pword."'")
 										or die(mysqli_error($db));
+			
 			if(mysqli_num_rows($query) ==1){
 
-				while($public_detail=mysqli_fetch_array($query)){
+				while($public_detail = mysqli_fetch_array($query)){
 
 				$_SESSION['id'] = $public_detail['user_id'];
-				$_SESSION['mail'] = $public_detail['email'];
+				$_SESSION['username'] = $public_detail['username'];
 
 				header("Location:home.php");
 			}
-			
 		}else{					
 			
 			$login_error="Invalid Username and/or Password";
@@ -80,8 +98,10 @@
 
 <form action="" method="post">
 	
-	<p>Username:<input type="text" name="uname" placeholder="Enter your username"></p>
-	<p>Password:<input type="password" name="pword" placeholder="Enter your password"></p>
+	<p>Username: <input type="text" name="uname" placeholder="Enter your username" class="lo"></p>
+
+	<p>Password: <input type="password" name="pword" placeholder="Enter your password" class="lo"></p>
+
 	<input type="submit" name="login" value="Click to login">
 
 
